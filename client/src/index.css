@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-zinc-100 font-sans;
+  }
+
+  .light body,
+  body.light {
+    @apply bg-gray-50 text-zinc-900;
+  }
+}
+
+@layer components {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.zinc.700') transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: theme('colors.zinc.700');
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .skeleton {
+    @apply animate-pulse bg-zinc-800 rounded;
+  }
+
+  .light .skeleton {
+    @apply bg-gray-200;
+  }
+}
+
+/* Transitions */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
+/* Custom scrollbar for the main content area */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-zinc-900;
+}
+
+.light *:focus-visible {
+  @apply ring-offset-white;
+}
+
+/* Input styles */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  cursor: pointer;
+}
+
+.light input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: none;
+}
