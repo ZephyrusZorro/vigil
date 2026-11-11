@@ -58,7 +58,7 @@ Open http://localhost:5173 — the app comes pre-loaded with realistic demo data
 |-------|-----------|
 | Frontend | React 18, TypeScript, Vite, Tailwind CSS, TanStack Query, Recharts |
 | Backend | Node.js, Express.js, TypeScript |
-| Database | SQLite (via better-sqlite3) — zero configuration |
+| Database | SQLite (via Node.js native `node:sqlite` DatabaseSync, WAL mode) — zero native build tools required |
 | Icons | Lucide React |
 
 ## Architecture
@@ -73,7 +73,7 @@ Open http://localhost:5173 — the app comes pre-loaded with realistic demo data
 │          Express Backend (3001)          │
 │  Routes → Services → Risk Engine        │
 └──────────────────┬──────────────────────┘
-                   │ better-sqlite3 (sync)
+                   │ node:sqlite (sync WAL)
 ┌──────────────────┴──────────────────────┐
 │         SQLite Database (WAL mode)       │
 │  items │ categories │ documents │ alerts │
